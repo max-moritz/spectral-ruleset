@@ -1,0 +1,18 @@
+extends: spectral:oas
+rules:
+  json:api-ContentType-Request:
+    description: "SHOULD have a content type 'application/vnd.api+json'."
+    recommended: true
+    severity: "warn"
+    given: "$.paths.[*].[*].requestBody.content"
+    then:
+      field: "['application/vnd.api+json']"
+      function: truthy
+  json:api-ContentType-Response:
+    description: "SHOULD have a content type 'application/vnd.api+json'."
+    recommended: true
+    severity: "warn"
+    given: "$.paths.[*].[*].responses[*].content"
+    then:
+      field: "['application/vnd.api+json']"
+      function: truthy
